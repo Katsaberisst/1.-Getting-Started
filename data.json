@@ -1,0 +1,6 @@
+locations_dict = {
+    'Los Angeles, US': {'lat': '34.0522', 'lon': '-118.2437'},
+    'Komotini, GR': {'lat':'41.122440', 'lon':'25.406557'},
+    'Lhasa, CN': {'lat':'29.652491', 'lon':'91.172112'},
+    'Cape Town, ZAF': {'lat':'-33.918861', 'lon':'18.423300'},
+}
