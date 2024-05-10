@@ -45,4 +45,4 @@ locations_dict = {
 }
 
 weather_data = get_weather_data(locations_dict, api_key)
-print weather_data['current']
+print (weather_data['current'])

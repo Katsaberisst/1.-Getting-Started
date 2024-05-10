@@ -9,6 +9,9 @@ os.environ["GOOGLE_APPLICATION_CREDENTIALS"] =  "C:/Users/pc-Huawei/OneDrive/ÎˆÎ
 bucket_name='weatherappdata'
 folder_path='data1/'
 json_data='datatest.json'
+
+
+  
 def upload_json_to_gcs(json_data: dict, bucket_name: str, folder_path: str) -> None:
   """Uploads a JSON object to Google Cloud Storage.
 
@@ -22,8 +25,9 @@ def upload_json_to_gcs(json_data: dict, bucket_name: str, folder_path: str) -> N
 
   # Create a new bucket if it doesn't exist
   try:
-      bucket = client.get_bucket(bucket_name)
-  except:       bucket = client.create_bucket(bucket_name)
+    bucket = client.get_bucket(bucket_name)
+  except:
+    bucket = client.create_bucket(bucket_name)
 
   # Generate a timestamp for the filename
   timestamp = datetime.datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
@@ -37,5 +41,9 @@ def upload_json_to_gcs(json_data: dict, bucket_name: str, folder_path: str) -> N
   # Convert JSON to bytes and upload
   blob = bucket.blob(object_path)
   blob.upload_from_string(json.dumps(json_data).encode("utf-8"), content_type="application/json")
+
+
+
+
 
   print(f"Uploaded {filename} to {bucket_name}/{object_path}")
