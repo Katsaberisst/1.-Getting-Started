@@ -32,7 +32,7 @@ def get_weather_data(locations:dict, api_key: str) -> dict:
       weather_data["current"][location_name] = fetch_api_data(current_url)
       weather_data["forecast"][location_name] = fetch_api_data(forecast_url)
       #print (weather_data["current"][location_name])
-      #print('\n')
+      #print('/n')
       #print (weather_data["forecast"][location_name])
 
     except requests.exceptions.RequestException as e:
@@ -53,14 +53,9 @@ locations_dict = {
 
 weather_data = get_weather_data(locations_dict, api_key)
 
-
 # Replace with the path to your downloaded JSON key file
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] =  "C:/Users/pc-Huawei/OneDrive/Έγγραφα/DataProjects/cloud-storage-admin-service-account.json"
-
-bucket_name='weatherappdata'
-folder_path='data1/'
-json_data='datatest.json'
-
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] =  "C:/Users/pc-Huawei/OneDrive/Έγγραφα/DataProjects/1. Getting Started/cloud-storage-admin-service-account.json"
+print('environ')
 
   
 def upload_json_to_gcs(json_data: dict, bucket_name: str, folder_path: str) -> None:
@@ -95,7 +90,21 @@ def upload_json_to_gcs(json_data: dict, bucket_name: str, folder_path: str) -> N
 
 
 
+  print("Uploading")
+  #print(f"Uploaded {filename} to {bucket_name}/{object_path}")
 
-  print(f"Uploaded {filename} to {bucket_name}/{object_path}")
 
-upload_json_to_gcs(weather_data,bucket_name,folder_path)
+bucket_name='weatherappdata'
+folder_path='data1/'
+#json_data='datatest.json'
+
+print('call upload')
+#print(f"Uploaded {weather_data} also {bucket_name} and {folder_path}")
+
+try:
+  #print(f"Uploaded {weather_data} also {bucket_name} and {folder_path}")
+  print("call upload_json_to_gcs")
+  upload_json_to_gcs(weather_data,bucket_name,folder_path)
+except Exception as error:
+    # handle the exception
+    print("An exception occurred:", error)
