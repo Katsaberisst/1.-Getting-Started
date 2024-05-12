@@ -105,6 +105,7 @@ try:
   #print(f"Uploaded {weather_data} also {bucket_name} and {folder_path}")
   print("call upload_json_to_gcs")
   upload_json_to_gcs(weather_data,bucket_name,folder_path)
+  print("called upload_json_to_")
 except Exception as error:
     # handle the exception
     print("An exception occurred:", error)
